@@ -1,46 +1,108 @@
-extends Node2D
+extends Control
+
+@onready var cookies_value: Label = $VBoxContainer/GameCore/PanelContainer/CookiesValue
+
+@onready var device_1: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_1/Device_1
+@onready var cookies_machine_price_1: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_1/CookiesMachinePrice_1
+@onready var cookies_machine_value_1: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_1/CookiesMachineValue_1
+@onready var button_1: Button = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_1/Button_1
+
+@onready var device_2: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_2/Device_2
+@onready var cookies_machine_price_2: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_2/CookiesMachinePrice_2
+@onready var cookies_machine_value_2: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_2/CookiesMachineValue_2
+@onready var button_2: Button = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_2/Button_2
+
+@onready var device_3: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_3/Device_3
+@onready var cookies_machine_price_3: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_3/CookiesMachinePrice_3
+@onready var cookies_machine_value_3: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_3/CookiesMachineValue_3
+@onready var button_3: Button = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_3/Button_3
+
+@onready var device_4: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_4/Device_4
+@onready var cookies_machine_price_4: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_4/CookiesMachinePrice_4
+@onready var cookies_machine_value_4: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_4/CookiesMachineValue_4
+@onready var button_4: Button = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_4/Button_4
+
+@onready var device_5: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_5/Device_5
+@onready var cookies_machine_price_5: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_5/CookiesMachinePrice_5
+@onready var cookies_machine_value_5: Label = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_5/CookiesMachineValue_5
+@onready var button_5: Button = $VBoxContainer/GameCore/PanelContainer2/Machine/Device_5/Button_5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var root = get_tree().root
 	Cookies.current_scene = root.get_child(root.get_child_count() - 1)
-	$GUI/CookiesMachinePrince.text = str(Cookies.machine_cookies_prince)
-	$GUI/CookiesMachineValue.text = str(Cookies.machine_cookies)
-	$GUI/CookiesValue.text = str(Cookies.cookies)
+	cookies_value.text = str(Cookies.cookies)
 
+	device_1.text = Cookies.get_machine_name("oven")
+	cookies_machine_price_1.text = str(Cookies.get_machine_price("oven"))
+	cookies_machine_value_1.text = str(Cookies.get_value_c_s_name("oven"))
+	
+	device_2.text = Cookies.get_machine_name("belt")
+	cookies_machine_price_2.text = str(Cookies.get_machine_price("belt"))
+	cookies_machine_value_2.text = str(Cookies.get_value_c_s_name("belt"))
+	
+	device_3.text = Cookies.get_machine_name("plant")
+	cookies_machine_price_3.text = str(Cookies.get_machine_price("plant"))
+	cookies_machine_value_3.text = str(Cookies.get_value_c_s_name("plant"))
+	
+	device_4.text = Cookies.get_machine_name("factory")
+	cookies_machine_price_4.text = str(Cookies.get_machine_price("factory"))
+	cookies_machine_value_4.text = str(Cookies.get_value_c_s_name("factory"))
+	
+	device_5.text = Cookies.get_machine_name("lab")
+	cookies_machine_price_5.text = str(Cookies.get_machine_price("lab"))
+	cookies_machine_value_5.text = str(Cookies.get_value_c_s_name("lab"))
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	Cookies.time_cookies += delta
-	Cookies.time_seconds = fmod(Cookies.time_cookies,60)
-	if Cookies.time_seconds >= 5:
-		machine_cookies_action()
-		Cookies.time_cookies = 0.0
-	
-	
-func machine_cookies_action():
-	Cookies.cookies = Cookies.cookies + (Cookies.machine_cookies * 2)
-	$GUI/CookiesValue.text = str(Cookies.cookies)
+func _physics_process(delta):
+	cookies_value.text = str(Cookies.cookies)
 
-func add_cookies(new_cookies_amount: int):
-	Cookies.cookies = new_cookies_amount
-	$GUI/CookiesValue.text = str(Cookies.cookies)
+	device_1.text = Cookies.get_machine_name("oven")
+	cookies_machine_price_1.text = str(Cookies.get_machine_price("oven"))
+	cookies_machine_value_1.text = str(Cookies.get_value_c_s_name("oven"))
 	
-func buy_machine_cookies():
-	if(Cookies.cookies >= Cookies.machine_cookies_prince):
-		Cookies.cookies = Cookies.cookies - Cookies.machine_cookies_prince
-		Cookies.machine_cookies = Cookies.machine_cookies + 1
-		Cookies.machine_cookies_prince = Cookies.machine_cookies_prince + 10
-		$GUI/CookiesMachinePrince.text = str(Cookies.machine_cookies_prince)
-		$GUI/CookiesMachineValue.text = str(Cookies.machine_cookies)
-		$GUI/CookiesValue.text = str(Cookies.cookies)
+	device_2.text = Cookies.get_machine_name("belt")
+	cookies_machine_price_2.text = str(Cookies.get_machine_price("belt"))
+	cookies_machine_value_2.text = str(Cookies.get_value_c_s_name("belt"))
+	
+	device_3.text = Cookies.get_machine_name("plant")
+	cookies_machine_price_3.text = str(Cookies.get_machine_price("plant"))
+	cookies_machine_value_3.text = str(Cookies.get_value_c_s_name("plant"))
+	
+	device_4.text = Cookies.get_machine_name("factory")
+	cookies_machine_price_4.text = str(Cookies.get_machine_price("factory"))
+	cookies_machine_value_4.text = str(Cookies.get_value_c_s_name("factory"))
+	
+	device_5.text = Cookies.get_machine_name("lab")
+	cookies_machine_price_5.text = str(Cookies.get_machine_price("lab"))
+	cookies_machine_value_5.text = str(Cookies.get_value_c_s_name("lab"))
 
 func _on_add_cookies_pressed():
-	add_cookies(Cookies.cookies + Cookies.cookies_per_click + Cookies.skill_one_value)
+	Cookies.cookies = Cookies.cookies + Cookies.cookies_per_click + Cookies.skill_one_value
 
-
-func _on_button_pressed():
-	buy_machine_cookies()
 	
 func _on_button_buy_skills_pressed():
-	Cookies.goto_scene("res://skills.tscn")
+	Cookies.goto_scene("res://scene/skills.tscn")
+
+
+func _on_button_1_pressed() -> void:
+	if(Cookies.can_buy_machine("oven")):
+		Cookies.buy_machine("oven")
+
+func _on_button_2_pressed() -> void:
+	if(Cookies.can_buy_machine("belt")):
+		Cookies.buy_machine("belt")
+
+func _on_button_3_pressed() -> void:
+	if(Cookies.can_buy_machine("plant")):
+		Cookies.buy_machine("plant")
+
+func _on_button_4_pressed() -> void:
+	if(Cookies.can_buy_machine("factory")):
+		Cookies.buy_machine("factory")
+
+func _on_button_5_pressed() -> void:
+	if(Cookies.can_buy_machine("lab")):
+		Cookies.buy_machine("lab")

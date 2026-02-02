@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://gnoddhkm3hfr"]
+[gd_scene format=3 uid="uid://gnoddhkm3hfr"]
 
-[ext_resource type="Script" path="res://skills.gd" id="1_7s3xt"]
+[ext_resource type="Script" uid="uid://boyjsht44ijti" path="res://script/skills.gd" id="1_7s3xt"]
 
-[node name="skills" type="Control"]
+[node name="skills" type="Control" unique_id=406093989]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7s3xt")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=970318079]
 layout_mode = 0
 offset_left = 790.0
 offset_top = 549.0
@@ -19,7 +19,7 @@ offset_right = 1074.0
 offset_bottom = 614.0
 text = "Powrót do gry"
 
-[node name="CookiesValue" type="Label" parent="."]
+[node name="CookiesValue" type="Label" parent="." unique_id=801285044]
 layout_mode = 0
 offset_left = 414.0
 offset_top = 7.0
@@ -28,7 +28,7 @@ offset_bottom = 65.0
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="CookiesLabel" type="Label" parent="."]
+[node name="CookiesLabel" type="Label" parent="." unique_id=218315349]
 layout_mode = 0
 offset_left = 295.0
 offset_right = 396.0
@@ -37,14 +37,14 @@ text = "Ilość ciastek:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Skill_1" type="Panel" parent="."]
+[node name="Skill_1" type="Panel" parent="." unique_id=367355953]
 layout_mode = 0
 offset_left = 53.0
 offset_top = 88.0
 offset_right = 242.0
 offset_bottom = 254.0
 
-[node name="Skill_1_Label" type="Label" parent="Skill_1"]
+[node name="Skill_1_Label" type="Label" parent="Skill_1" unique_id=878880131]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 17.0
@@ -54,7 +54,7 @@ text = "Zwiększ zdobywane
 ciastka przy kliknieciu
 o 4 dodatkowe ciastka"
 
-[node name="Skill_1_Button" type="Button" parent="Skill_1"]
+[node name="Skill_1_Button" type="Button" parent="Skill_1" unique_id=204683485]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 101.0

@@ -8,16 +8,28 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="CiasteczkaYT"
 run/main_scene="res://menu.tscn"
-config/features=PackedStringArray("4.1", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Cookies="*res://Cookies.gd"
+Cookies="*res://autoload/Cookies.gd"
+
+[dotnet]
+
+project/assembly_name="CiasteczkaYT"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [rendering]
 

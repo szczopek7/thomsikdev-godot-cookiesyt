@@ -1,104 +1,285 @@
-[gd_scene load_steps=2 format=3 uid="uid://bor886767jrvk"]
+[gd_scene format=3 uid="uid://bor886767jrvk"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_8l278"]
+[ext_resource type="Script" uid="uid://thuq82sve33i" path="res://game.gd" id="1_8l278"]
 
-[node name="game" type="Node2D"]
+[node name="Game" type="Control" unique_id=583106561]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_8l278")
 
-[node name="GUI" type="Control" parent="."]
-layout_mode = 3
+[node name="GUI" type="Control" parent="." unique_id=629243785]
 anchors_preset = 0
 offset_right = 1155.0
 offset_bottom = 647.0
 
-[node name="AddCookies" type="Button" parent="GUI"]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 322.0
-offset_right = 515.0
-offset_bottom = 393.0
-text = "Dodaj ciasteczka"
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1500670892]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CookiesValue" type="Label" parent="GUI"]
-layout_mode = 0
-offset_left = 69.0
-offset_top = 61.0
-offset_right = 514.0
-offset_bottom = 242.0
+[node name="UpBar" type="HBoxContainer" parent="VBoxContainer" unique_id=1948455782]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/UpBar" unique_id=488852199]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/UpBar" unique_id=934713533]
+layout_mode = 2
+
+[node name="GameCore" type="HBoxContainer" parent="VBoxContainer" unique_id=241583791]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="PanelContainer" type="VBoxContainer" parent="VBoxContainer/GameCore" unique_id=231849299]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CookiesValue" type="Label" parent="VBoxContainer/GameCore/PanelContainer" unique_id=394706750]
+layout_mode = 2
+size_flags_vertical = 6
 theme_override_font_sizes/font_size = 106
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Device Prince" type="Label" parent="GUI"]
-layout_mode = 0
-offset_left = 691.0
-offset_top = 78.0
-offset_right = 803.0
-offset_bottom = 130.0
-text = "Koszt 
-urządzenia"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="AddCookies" type="Button" parent="VBoxContainer/GameCore/PanelContainer" unique_id=858112219]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dodaj ciasteczka"
 
-[node name="Device Amount" type="Label" parent="GUI"]
-layout_mode = 0
-offset_left = 816.0
-offset_top = 78.0
-offset_right = 896.0
-offset_bottom = 130.0
-text = "Ilość
-posiadana"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/GameCore" unique_id=87032319]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Devices" type="Label" parent="GUI"]
-layout_mode = 0
-offset_left = 693.0
-offset_top = 13.0
-offset_right = 1124.0
-offset_bottom = 61.0
+[node name="Machine" type="VBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2" unique_id=891447506]
+layout_mode = 2
+
+[node name="PanelContainer" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=824712269]
+layout_mode = 2
+
+[node name="Devices" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/PanelContainer" unique_id=853430459]
+layout_mode = 2
 text = "Maszyny do zakupienia"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Button" type="Button" parent="GUI"]
-layout_mode = 0
-offset_left = 914.0
-offset_top = 132.0
-offset_right = 1136.0
-offset_bottom = 198.0
-text = "Kup maszyne 
-do ciastek"
+[node name="Device_1" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=896642572]
+layout_mode = 2
 
-[node name="CookiesMachineValue" type="Label" parent="GUI"]
-layout_mode = 0
-offset_left = 823.0
-offset_top = 139.0
-offset_right = 895.0
-offset_bottom = 196.0
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Device_1" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=1309548310]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{name}"
 
-[node name="CookiesMachinePrince" type="Label" parent="GUI"]
-layout_mode = 0
-offset_left = 708.0
-offset_top = 138.0
-offset_right = 789.0
-offset_bottom = 199.0
+[node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=1116058244]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$:"
+
+[node name="CookiesMachinePrice_1" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=1779527424]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button_Buy_Skills" type="Button" parent="GUI"]
-layout_mode = 0
-offset_left = 699.0
-offset_top = 560.0
-offset_right = 1127.0
-offset_bottom = 615.0
+[node name="Label2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=2119630260]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "C/s:"
+
+[node name="CookiesMachineValue_1" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=549892001]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_1" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=1525224100]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kup maszyne 
+do ciastek"
+
+[node name="Device_2" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=113334113]
+layout_mode = 2
+
+[node name="Device_2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=1046381049]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{name}"
+
+[node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=155270524]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$:"
+
+[node name="CookiesMachinePrice_2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=348903174]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=435868612]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "C/s:"
+
+[node name="CookiesMachineValue_2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=1028368848]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_2" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=938788127]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kup maszyne 
+do ciastek"
+
+[node name="Device_3" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=1499429698]
+layout_mode = 2
+
+[node name="Device_3" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=358146255]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{name}"
+
+[node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=610406076]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$:"
+
+[node name="CookiesMachinePrice_3" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=1256719185]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=2146335647]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "C/s:"
+
+[node name="CookiesMachineValue_3" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=295098485]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_3" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=406214052]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kup maszyne 
+do ciastek"
+
+[node name="Device_4" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=304510738]
+layout_mode = 2
+
+[node name="Device_4" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=734770178]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{name}"
+
+[node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=394458467]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$:"
+
+[node name="CookiesMachinePrice_4" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=1239971636]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=732079159]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "C/s:"
+
+[node name="CookiesMachineValue_4" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=1915069937]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_4" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=1346714006]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kup maszyne 
+do ciastek"
+
+[node name="Device_5" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=194462072]
+layout_mode = 2
+
+[node name="Device_5" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=624723338]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{name}"
+
+[node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=348851809]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$:"
+
+[node name="CookiesMachinePrice_5" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=699262990]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=1105536003]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "C/s:"
+
+[node name="CookiesMachineValue_5" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=1279611094]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_5" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=727547537]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kup maszyne 
+do ciastek"
+
+[node name="DownBar" type="HBoxContainer" parent="VBoxContainer" unique_id=899989524]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/DownBar" unique_id=1842915091]
+layout_mode = 2
+
+[node name="Button_Buy_Skills" type="Button" parent="VBoxContainer/DownBar/PanelContainer" unique_id=886553754]
+layout_mode = 2
 text = "Zakup umiejętności"
 
-[connection signal="pressed" from="GUI/AddCookies" to="." method="_on_add_cookies_pressed"]
-[connection signal="pressed" from="GUI/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="GUI/Button_Buy_Skills" to="." method="_on_button_buy_skills_pressed"]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/DownBar" unique_id=1030668147]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/GameCore/PanelContainer/AddCookies" to="." method="_on_add_cookies_pressed"]
+[connection signal="pressed" from="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1/Button_1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2/Button_2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3/Button_3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4/Button_4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5/Button_5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownBar/PanelContainer/Button_Buy_Skills" to="." method="_on_button_buy_skills_pressed"]

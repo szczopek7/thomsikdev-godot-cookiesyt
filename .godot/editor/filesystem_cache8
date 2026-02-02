@@ -1,0 +1,11 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1729690245
+Cookies.gd::GDScript::-1::1729528384::0::1::::<>Node2D<>::
+game.gd::GDScript::-1::1708342376::0::1::::<>Node2D<>::
+game.tscn::PackedScene::3406223187513956288::1729528384::0::1::::<><>::res://game.gd
+icon.svg::CompressedTexture2D::5396167021164976803::1700241701::1729528315::1::::<><>::
+menu.gd::GDScript::-1::1697383124::0::1::::<>Control<>::
+menu.tscn::PackedScene::5945230959978305763::1729528384::0::1::::<><>::res://menu.gd
+README.md::TextFile::-1::1700244011::0::1::::<><>::
+skills.gd::GDScript::-1::1700243414::0::1::::<>Control<>::
+skills.tscn::PackedScene::448825536766596983::1729528384::0::1::::<><>::res://skills.gd
