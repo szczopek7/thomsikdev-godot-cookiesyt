@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqx6c5ux1hlpb"]
+[gd_scene format=3 uid="uid://cqx6c5ux1hlpb"]
 
-[ext_resource type="Script" path="res://menu.gd" id="1_u2nld"]
+[ext_resource type="Script" uid="uid://c3ube7yw5dlms" path="res://menu.gd" id="1_u2nld"]
+[ext_resource type="Texture2D" uid="uid://c0midrvey0e8l" path="res://assets/Cookie.png" id="2_ouk20"]
 
-[node name="Menu" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mae5d"]
+bg_color = Color(0.4464972, 0.35636497, 2.5990605e-06, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouk20"]
+bg_color = Color(0.29899007, 0.13521957, 0.03809371, 1)
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hy44"]
+bg_color = Color(0.7469413, 0.5262893, 0.09160697, 1)
+
+[node name="Menu" type="Control" unique_id=1490860098]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,21 +22,83 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u2nld")
 
-[node name="Play" type="Button" parent="."]
-layout_mode = 0
-offset_left = 289.0
-offset_top = 260.0
-offset_right = 893.0
-offset_bottom = 353.0
+[node name="Background" type="Panel" parent="." unique_id=759825503]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mae5d")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1178862410]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer" unique_id=1670093259]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/HBoxContainer" unique_id=317689632]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+texture = ExtResource("2_ouk20")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Background/MarginContainer/HBoxContainer" unique_id=1089923106]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/HBoxContainer/CenterContainer" unique_id=1959057749]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=736557422]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Clicker ThomsikDev Cookies"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=738704463]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="Play" type="Button" parent="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=27471755]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ouk20")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4hy44")
 text = "Graj"
 
-[node name="Quit" type="Button" parent="."]
-layout_mode = 0
-offset_left = 289.0
-offset_top = 530.0
-offset_right = 883.0
-offset_bottom = 588.0
+[node name="Leaderboard" type="Button" parent="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=966564507]
+layout_mode = 2
+text = "Tablica wyników"
+
+[node name="Settings" type="Button" parent="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=887637310]
+layout_mode = 2
+text = "Ustawienia"
+
+[node name="Quit" type="Button" parent="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=1682394829]
+layout_mode = 2
 text = "Wyjdź z gry"
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[node name="Control2" type="Control" parent="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=255877239]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="Creators" type="Label" parent="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=1128031677]
+layout_mode = 2
+text = "Created by Patryk ThomsikDev Tomasik, Graphics: Rafał Orzechowski"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Background/MarginContainer/HBoxContainer" unique_id=1100015765]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+texture = ExtResource("2_ouk20")
+expand_mode = 3
+
+[connection signal="pressed" from="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

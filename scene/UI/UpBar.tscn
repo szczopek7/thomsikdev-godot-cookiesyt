@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://beqjt6wpaao3x"]
+
+[ext_resource type="Script" uid="uid://c6wdo8ayieium" path="res://script/UI/up_bar.gd" id="1_h1sk0"]
+
+[node name="UpBar" type="Control" unique_id=799967812]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_h1sk0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=43313425]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1059880120]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Timer" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1138946445]
+layout_mode = 2
+
+[node name="Time_To_End_Progress" type="ProgressBar" parent="HBoxContainer/VBoxContainer" unique_id=377202004]
+layout_mode = 2
+size_flags_vertical = 2
+max_value = 30.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1701032985]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cookies_Pass" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=934062772]
+layout_mode = 2
+
+[node name="Machine_Pass" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1473275511]
+layout_mode = 2
+
+[node name="Extra_Pass" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=415901777]
+layout_mode = 2

@@ -1,10 +1,19 @@
 extends Node2D
 
 #amount of cookies
-var cookies: int = 5000
+var cookies: int = 0
 
 #cookies_per_click
 var cookies_per_click: int = 1
+
+#timer konca gry
+var end_timer:Timer
+
+#koniec gry
+
+var endgame = false
+var endgame_cost: int = 128
+var endgame_multiplier: float = 1.4
 
 var machines = {
 	"oven": {
@@ -16,27 +25,39 @@ var machines = {
 	"belt": {
 		"name": "Belt",
 		"count": 0,
-		"interval": 5.0,
+		"interval": 4.0,
 		"cookies": 5
 	},
 	"plant": {
 		"name": "Plant",
 		"count": 0,
-		"interval": 10.0,
+		"interval": 8.0,
 		"cookies": 20
 	},
 	"factory": {
 		"name": "Factory",
 		"count": 0,
-		"interval": 30.0,
+		"interval": 16.0,
 		"cookies": 100
 	},
 	"lab": {
 		"name": "Lab",
 		"count": 0,
-		"interval": 1.0,
+		"interval": 32.0,
 		"cookies": 500
 	}
+}
+
+var current_goal = {
+	"machine": "",
+	"required": 0,
+	"cookies_required": 0
+}
+
+var extra_goal = {
+	"active": false,
+	"machine": "",
+	"required": 0
 }
 
 var current_scene = null
@@ -64,17 +85,63 @@ func _on_machine_timeout(machine_name: String):
 	if data.count > 0:
 		cookies += data.count * data.cookies
 
-
+# Co 60 sekund - gra sama odejmuje wymagane przedmioty
+# np . ciastka
+# lub maszyny
+# Jeśli nie mamym to wtedy koniec gry TODO: Ekran konca gry
 
 func _create_endgame_timer():
-	var end_timer := Timer.new()
-	end_timer.wait_time = 300.0 # 5 minut
+	end_timer = Timer.new()
+	end_timer.wait_time = 30.0
 	end_timer.autostart = true
 	end_timer.timeout.connect(_on_endgame)
 	add_child(end_timer)
 
+
 func _on_endgame():
-	print("EndGame")
+	
+	if current_goal["machine"] == "":
+		generate_goal()
+		return
+
+	var main_machine = current_goal["machine"]
+
+	# zabezpieczenie jeśli klucz nie istnieje
+	if not machines.has(main_machine):
+		return
+	
+	var owned_main = machines[main_machine]["count"]
+
+	var cookies_pass = cookies >= current_goal["cookies_required"]
+	var main_pass = owned_main >= current_goal["required"]
+	var extra_pass = true
+
+	if extra_goal["active"]:
+		if machines.has(extra_goal["machine"]):
+			var owned_extra = machines[extra_goal["machine"]]["count"]
+			extra_pass = owned_extra >= extra_goal["required"]
+
+	if cookies_pass and main_pass and extra_pass:
+
+		print("Lecimy Dalej")
+
+		cookies -= current_goal["cookies_required"]
+		
+		#Timer dodaje dodatkowe sekundy
+		end_timer.wait_time += 10.0
+		print(end_timer.time_left)
+		end_timer.start()
+
+		endgame_cost = int(endgame_cost * endgame_multiplier)
+
+		generate_goal()
+
+	else:
+		end_timer.stop()
+		endgame = true
+		get_tree().change_scene_to_file("res://end_game.tscn");
+
+	# zwiększamy koszt na kolejny tick
 	
 	
 #Funkcje w grze
@@ -85,11 +152,18 @@ func get_machine_name(machine_name: String) -> String:
 
 #Zworaca c/s 
 func get_value_c_s_name(machine_name: String) -> int:
-	return machines[machine_name].count * machines[machine_name].cookies
+	var cs_overall = machines[machine_name].count * machines[machine_name].cookies
+	cs_overall = cs_overall / machines[machine_name].interval
+	
+	return cs_overall
 
 #Pobierz cene maszyny bazową
 func get_machine_base_price(machine_name: String) -> int:
 	return machines[machine_name].cookies * 10
+
+#Pobierz aktualno ilosc posiadanych maszyn
+func get_machine_owned_count(machine_name: String) -> int:
+	return machines[machine_name].count
 
 #Pobierz cene maszyny aktualną do UI
 func get_machine_price(machine_name: String) -> int:
@@ -114,6 +188,51 @@ func buy_machine(machine_name: String):
 	machines[machine_name].count += 1
 
 	#Wszystko okej kupiło maszyne
+
+#generowanie celi w grze
+func generate_goal():
+
+	#sprawdzamy odblokowane maszyny
+	var unlocked = []
+
+	#sprawdzamy czy odblokowano maszyne, czyli po prostu kupiono ja
+	for key in machines.keys():
+		if machines[key]["count"] > 0:
+			unlocked.append(key)
+	#jesli nie ma maszyn to nic
+	if unlocked.is_empty():
+		current_goal["machine"] = ""
+		return
+
+	#Wybieramy losową maszyne do celu gry
+	var random_machine = unlocked[randi() % unlocked.size()]
+	var current_count = machines[random_machine]["count"]
+
+
+	current_goal["machine"] = random_machine
+	
+	#Musimy mieć o 1 do 6 więcej aby przejść dalej
+	current_goal["required"] = randi_range(current_count + 1, current_count + 4)
+	current_goal["cookies_required"] = endgame_cost
+
+	#print("Cel:", random_machine, current_goal["required"], " + cookies ", endgame_cost)
+
+	#Bonusowe zadalnie 
+	extra_goal["active"] = false
+
+	if randi() % 2 == 0 and unlocked.size() > 1:
+
+		var extra_machine = unlocked[randi() % unlocked.size()]
+
+		if extra_machine != random_machine:
+
+			var extra_count = machines[extra_machine]["count"]
+
+			extra_goal["active"] = true
+			extra_goal["machine"] = extra_machine
+			extra_goal["required"] = randi_range(extra_count + 1, extra_count + 5)
+
+			#print("extra cel:", extra_machine, extra_goal["required"])
 
 
 func goto_scene(path):

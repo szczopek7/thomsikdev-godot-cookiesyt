@@ -1,6 +1,80 @@
 [gd_scene format=3 uid="uid://bor886767jrvk"]
 
 [ext_resource type="Script" uid="uid://thuq82sve33i" path="res://game.gd" id="1_8l278"]
+[ext_resource type="PackedScene" uid="uid://beqjt6wpaao3x" path="res://scene/UI/UpBar.tscn" id="2_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://c0midrvey0e8l" path="res://assets/Cookie.png" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://duknkossxgylt" path="res://assets/oven/tile000.png" id="4_7jktm"]
+[ext_resource type="Texture2D" uid="uid://b5twbh36yx88h" path="res://assets/oven/tile001.png" id="5_ryrav"]
+[ext_resource type="Texture2D" uid="uid://5rnrvrluxxng" path="res://assets/factory/tile000.png" id="6_215e1"]
+[ext_resource type="Texture2D" uid="uid://l7tofxawum43" path="res://assets/belt/tile000.png" id="6_qhcbd"]
+[ext_resource type="Texture2D" uid="uid://baadymdfvuofs" path="res://assets/factory/tile001.png" id="7_7sc4i"]
+[ext_resource type="Texture2D" uid="uid://cxwh777u02yyt" path="res://assets/belt/tile001.png" id="7_f1jbl"]
+[ext_resource type="Texture2D" uid="uid://b2u1bk6r4ta5i" path="res://assets/factory/tile002.png" id="8_80cx4"]
+[ext_resource type="Texture2D" uid="uid://bpmivoau7qxtm" path="res://assets/belt/tile002.png" id="8_vaj68"]
+[ext_resource type="Texture2D" uid="uid://dp5pbo3aqd6qm" path="res://assets/factory/tile003.png" id="9_e8heu"]
+[ext_resource type="Texture2D" uid="uid://cs58e4e5sxmos" path="res://assets/belt/tile003.png" id="9_i2p71"]
+[ext_resource type="Texture2D" uid="uid://bns5quxj8u1me" path="res://assets/factory/tile004.png" id="10_rvswv"]
+[ext_resource type="Texture2D" uid="uid://873y0a0dqu0t" path="res://assets/plant/tile000.png" id="10_xa8c5"]
+[ext_resource type="Texture2D" uid="uid://c3jbcrssrhftl" path="res://assets/plant/tile001.png" id="11_5b14r"]
+[ext_resource type="Texture2D" uid="uid://c0q3ofi5w6ool" path="res://assets/lab/tile000.png" id="11_boyg6"]
+[ext_resource type="Texture2D" uid="uid://isojl7osg3o5" path="res://assets/plant/tile002.png" id="12_bnpwn"]
+[ext_resource type="Texture2D" uid="uid://oye4ba1wn8pd" path="res://assets/lab/tile001.png" id="12_e36ub"]
+[ext_resource type="Texture2D" uid="uid://3meji751gjd7" path="res://assets/plant/tile003.png" id="13_36jdj"]
+[ext_resource type="Texture2D" uid="uid://b22kp3tvopmi7" path="res://assets/lab/tile002.png" id="13_hb5m1"]
+[ext_resource type="Texture2D" uid="uid://4nlmqv8rge3a" path="res://assets/lab/tile003.png" id="14_x5p1p"]
+[ext_resource type="Texture2D" uid="uid://colwgm806q2rm" path="res://assets/plant/tile004.png" id="14_xfvwf"]
+
+[sub_resource type="Theme" id="Theme_qhcbd"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_eow3j"]
+frames = 2
+frame_0/texture = ExtResource("4_7jktm")
+frame_1/texture = ExtResource("5_ryrav")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_qhcbd"]
+frames = 4
+frame_0/texture = ExtResource("6_qhcbd")
+frame_1/texture = ExtResource("7_f1jbl")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("8_vaj68")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("9_i2p71")
+frame_3/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_f1jbl"]
+frames = 5
+frame_0/texture = ExtResource("10_xa8c5")
+frame_1/texture = ExtResource("11_5b14r")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("12_bnpwn")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("13_36jdj")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("14_xfvwf")
+frame_4/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_vaj68"]
+frames = 5
+frame_0/texture = ExtResource("6_215e1")
+frame_1/texture = ExtResource("7_7sc4i")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("8_80cx4")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("9_e8heu")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("10_rvswv")
+frame_4/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_i2p71"]
+frames = 4
+frame_0/texture = ExtResource("11_boyg6")
+frame_1/texture = ExtResource("12_e36ub")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("13_hb5m1")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("14_x5p1p")
+frame_3/duration = 1.0
 
 [node name="Game" type="Control" unique_id=583106561]
 layout_mode = 3
@@ -12,9 +86,12 @@ grow_vertical = 2
 script = ExtResource("1_8l278")
 
 [node name="GUI" type="Control" parent="." unique_id=629243785]
-anchors_preset = 0
-offset_right = 1155.0
-offset_bottom = 647.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1500670892]
 layout_mode = 1
@@ -23,15 +100,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_qhcbd")
 
 [node name="UpBar" type="HBoxContainer" parent="VBoxContainer" unique_id=1948455782]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/UpBar" unique_id=488852199]
-layout_mode = 2
-
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/UpBar" unique_id=934713533]
+[node name="UpBar2" parent="VBoxContainer/UpBar" unique_id=799967812 instance=ExtResource("2_e2o6t")]
 layout_mode = 2
 
 [node name="GameCore" type="HBoxContainer" parent="VBoxContainer" unique_id=241583791]
@@ -54,7 +129,22 @@ vertical_alignment = 1
 [node name="AddCookies" type="Button" parent="VBoxContainer/GameCore/PanelContainer" unique_id=858112219]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Dodaj ciasteczka"
+size_flags_stretch_ratio = 4.0
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GameCore/PanelContainer/AddCookies" unique_id=929451453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 159.0
+offset_top = -13.0
+offset_right = -148.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_feb5d")
+expand_mode = 3
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/GameCore" unique_id=87032319]
 layout_mode = 2
@@ -68,6 +158,7 @@ layout_mode = 2
 
 [node name="Devices" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/PanelContainer" unique_id=853430459]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Maszyny do zakupienia"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -75,10 +166,26 @@ vertical_alignment = 2
 [node name="Device_1" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=896642572]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=321989762]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = SubResource("AnimatedTexture_eow3j")
+expand_mode = 3
+
 [node name="Device_1" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=1309548310]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "{name}"
+
+[node name="Owned" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=233380357]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Posiadane: "
+
+[node name="Owned_Count_1" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=481230981]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{count}"
 
 [node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=1116058244]
 layout_mode = 2
@@ -105,6 +212,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button_1" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_1" unique_id=1525224100]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Kup maszyne 
@@ -113,10 +221,26 @@ do ciastek"
 [node name="Device_2" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=113334113]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=1790502737]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = SubResource("AnimatedTexture_qhcbd")
+expand_mode = 3
+
 [node name="Device_2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=1046381049]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "{name}"
+
+[node name="Owned" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=460917352]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Posiadane: "
+
+[node name="Owned_Count_2" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=825687700]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{count}"
 
 [node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=155270524]
 layout_mode = 2
@@ -143,6 +267,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button_2" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_2" unique_id=938788127]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Kup maszyne 
@@ -151,10 +276,26 @@ do ciastek"
 [node name="Device_3" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=1499429698]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=268426489]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = SubResource("AnimatedTexture_f1jbl")
+expand_mode = 3
+
 [node name="Device_3" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=358146255]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "{name}"
+
+[node name="Owned" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=217981624]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Posiadane: "
+
+[node name="Owned_Count_3" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=1861779952]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{count}"
 
 [node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=610406076]
 layout_mode = 2
@@ -181,6 +322,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button_3" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_3" unique_id=406214052]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Kup maszyne 
@@ -189,10 +331,26 @@ do ciastek"
 [node name="Device_4" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=304510738]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=1762260172]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = SubResource("AnimatedTexture_vaj68")
+expand_mode = 3
+
 [node name="Device_4" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=734770178]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "{name}"
+
+[node name="Owned" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=1527462530]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Posiadane: "
+
+[node name="Owned_Count_4" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=586630404]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{count}"
 
 [node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=394458467]
 layout_mode = 2
@@ -219,6 +377,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button_4" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_4" unique_id=1346714006]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Kup maszyne 
@@ -227,10 +386,26 @@ do ciastek"
 [node name="Device_5" type="HBoxContainer" parent="VBoxContainer/GameCore/PanelContainer2/Machine" unique_id=194462072]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=382800076]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = SubResource("AnimatedTexture_i2p71")
+expand_mode = 3
+
 [node name="Device_5" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=624723338]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "{name}"
+
+[node name="Owned" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=8698055]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Posiadane: "
+
+[node name="Owned_Count_5" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=32982692]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{count}"
 
 [node name="Label" type="Label" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=348851809]
 layout_mode = 2
@@ -257,6 +432,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button_5" type="Button" parent="VBoxContainer/GameCore/PanelContainer2/Machine/Device_5" unique_id=727547537]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Kup maszyne 
