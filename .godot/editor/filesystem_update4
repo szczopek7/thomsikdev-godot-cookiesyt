@@ -1,4 +1,2 @@
-res://scene/skills.tscn
-res://autoload/Cookies.gd
-res://game.gd
-res://game.tscn
+res://menu.tscn
+res://README.md
